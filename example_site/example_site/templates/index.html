@@ -1,13 +1,42 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Bienvenida</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+
+        function postRquest(body) {
+
+            let refuerzaUrl = "https://refuerza.cl/"
+
+            fetch(refuerzaUrl + 'api/principal/auditoria', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(body)
+            })
+                .then(response => response.json())
+                .then(response => console.log(JSON.stringify(response)))
+        }
+
+        function enviarAud(titulo, mensaje) {
+            let body = {
+                "titulo": titulo,
+                "descripcion": mensaje
+            }
+            postRquest(body)
+        }
+        enviarAud("libro 3", "se cargo la pagina django example")
+    </script>
     <style>
-        body, html {
+        body,
+        html {
             height: 100%;
             margin: 0;
             display: flex;
@@ -15,9 +44,11 @@
             align-items: center;
             background-color: #f8f9fa;
         }
+
         .welcome-container {
             text-align: center;
         }
+
         .btn-custom {
             background-color: #007bff;
             color: white;
@@ -26,20 +57,23 @@
             border-radius: 25px;
             transition: background-color 0.3s;
         }
+
         .btn-custom:hover {
             background-color: #0056b3;
         }
     </style>
 </head>
+
 <body>
     <div class="welcome-container">
         <h1 class="mb-4">Bienvenido a la aplicación de ejemplo </h1>
         <button class="btn btn-custom" onclick="window.location.href='https://refuerza.cl'">Ir a Refuerza</button>
     </div>
-    
+
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
