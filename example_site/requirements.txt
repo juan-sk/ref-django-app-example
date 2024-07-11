@@ -2,8 +2,4 @@ Django==4.1
 django-model-utils==4.3.1
 djangorestframework==3.14.0
 djangorestframework-simplejwt==5.2.2
-idna==3.7
-josepy==1.14.0
 LiteSpeed==1.2.0
-mod-wsgi==5.0.0
-
